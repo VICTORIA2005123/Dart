@@ -1,0 +1,23 @@
+void main() {
+  var result = prodNameGenerator("This is a product, which I want to sell ");
+  for (String s in result) {
+    print("$s \n");
+  }
+}
+
+List<String> prodNameGenerator(String name) {
+  List<String> out = ["", "", "", ""];
+  // first line must have <=11 characters
+  // other lines must have <=25 characters
+  List<String> words = name.split(" ");
+  int i = 0;
+  for (String w in words) {
+    if (("${out[i]}$w").length <= (i==0?11:25)) {
+      out[i] += w + " ";
+    } else {
+      out[++i] += w + " ";
+    }
+    if (i == 3) break;
+  }
+  return out;
+}
